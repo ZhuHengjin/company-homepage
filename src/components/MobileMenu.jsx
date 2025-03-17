@@ -17,17 +17,6 @@ const MobileMenu = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
   
-  const navLinks = [
-    { name: '研究', path: '/research' },
-    { name: '安全', path: '/safety' },
-    { name: 'UtilityMax', path: '/utilitymax' },
-    { name: 'API平台', path: '/api' },
-    { name: '商务', path: '/business' },
-    { name: '故事', path: '/stories' },
-    { name: '公司', path: '/company' },
-    { name: '新闻', path: '/news' },
-  ];
-  
   const mainLinks = [
     { name: '关于我们', path: '/about' },
     { name: '产品分销', path: '/products' },
@@ -87,13 +76,14 @@ const MobileMenu = ({ isOpen, onClose }) => {
             </div>
             
             <div className="px-6 py-4">
-              <div className="mb-8">
+              {/* Removed search input */}
+              {/* <div className="mb-8">
                 <input
                   type="text"
                   placeholder="搜索..."
                   className="w-full py-2 px-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-black"
                 />
-              </div>
+              </div> */}
               
               {/* Main Navigation */}
               <div className="mb-8">
@@ -102,7 +92,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
                     <li key={link.path}>
                       <Link 
                         to={link.path}
-                        className="block font-medium hover:text-gray-600 transition-colors"
+                        className="nav-link"
                         onClick={onClose}
                       >
                         {link.name}
@@ -110,35 +100,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
                     </li>
                   ))}
                 </ul>
-              </div>
-              
-              {/* Secondary Navigation */}
-              <div className="mt-12 border-t pt-8">
-                <ul className="space-y-4">
-                  {navLinks.map((link) => (
-                    <li key={link.path}>
-                      <Link 
-                        to={link.path}
-                        className="block text-gray-600 hover:text-black transition-colors"
-                        onClick={onClose}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Login Button */}
-              <div className="mt-12">
-                <Link 
-                  to="/login" 
-                  className="block w-full text-center btn-primary"
-                  onClick={onClose}
-                >
-                  登录
-                </Link>
-              </div>
+              </div>              
             </div>
           </motion.div>
         </>
