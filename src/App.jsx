@@ -30,25 +30,15 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
-
   return (
     <Router>
-      <div className="min-h-screen relative">
-        {/* Fixed header at top */}
+      <div className="min-h-screen relative bg-white">
         <Header 
-          scrolled={scrolled} 
           setIsMobileMenuOpen={setIsMobileMenuOpen}
-          className="fixed top-0 left-0 right-0 h-16 bg-white z-50"
         />
-        {/* Fixed navbar on left beneath header */}
-        <Navbar 
-          scrolled={scrolled} 
-          setIsMobileMenuOpen={setIsMobileMenuOpen} 
-          className="fixed top-16 left-0 w-48 bg-gray-200 h-[calc(100vh-4rem)] p-4"
-        />
-        {/* Content area offset by header height and navbar width */}
-        <div className="md:ml-48 pt-12 flex flex-col min-h-screen">
-          <main className="flex-grow p-5 md:p-10">
+        <Navbar />
+        <div className="md:ml-40 pt-12 flex flex-col min-h-screen">
+          <main className="flex-grow p-5 md:p-10 border-b">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -60,11 +50,11 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          <Footer className="p-4" />
+          <Footer />
         </div>
         <MobileMenu 
           isOpen={isMobileMenuOpen} 
-          onClose={() => setIsMobileMenuOpen(false)} 
+          onClose={() => setIsMobileMenuOpen(false)}
         />
       </div>
     </Router>

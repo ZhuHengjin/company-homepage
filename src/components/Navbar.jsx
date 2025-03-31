@@ -1,19 +1,8 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { HiMenu, HiOutlineSearch } from 'react-icons/hi';
+import { navLinks } from './navConfig';
 
-const Navbar = ({ scrolled, setIsMobileMenuOpen }) => {
-  const [searchOpen, setSearchOpen] = useState(false);
+const Navbar = () => {
   const location = useLocation();
-  
-  const navLinks = [
-    { name: '关于我们', path: '/about' },
-    { name: '产品分销', path: '/products' },
-    { name: '资源中心', path: '/resources' },
-    { name: '社会责任', path: '/responsibility' },
-    { name: '联系我们', path: '/contact' },
-  ];
   
   return (
     <div className="hidden fixed left-0 top-32 p-5 md:block">

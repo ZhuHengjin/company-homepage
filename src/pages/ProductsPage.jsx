@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 const ProductsPage = () => {
   const [activeCategory, setActiveCategory] = useState('全部');
@@ -69,33 +68,30 @@ const ProductsPage = () => {
     ? products 
     : products.filter(product => product.category === activeCategory);
   
+  
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-16 pb-5">
         <div className="container-custom">
-          <motion.div 
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">产品分销</h1>
-            <p className="text-lg text-gray-600">
-              我们提供多种创新的金融产品和服务，满足不同客户的需求。探索我们的产品，找到最适合您的解决方案。
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="title">产品分销</h1>
+            <p className="subtitle">
+              我们提供多种创新的金融产品和服务<br />
+              满足不同客户的需求和目标
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Product Categories Filter */}
+      {/* Product Categories */}
       <section className="py-8 border-b">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center space-x-2 space-y-2 md:space-y-0">
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium ${
                   activeCategory === category
                     ? 'bg-black text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -109,39 +105,35 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* Products Grid */}
+      {/* Products Section */}
       <section className="py-16">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <motion.div
+              <div
                 key={product.id}
-                className="border rounded-lg p-6 hover:shadow-lg transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                layout
+                className="border rounded-lg p-6 hover:shadow-lg"
               >
                 <div className="text-3xl mb-4">{product.icon}</div>
-                <h3 className="text-xl font-medium mb-2">{product.name}</h3>
+                <h3 className="card-title">{product.name}</h3>
                 <p className="text-sm text-gray-500 mb-2">{product.category}</p>
-                <p className="text-gray-600 mb-4">{product.description}</p>
+                <p className="general-text">{product.description}</p>
                 <button className="text-black font-medium hover:underline">
                   了解更多 →
                 </button>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Service Process */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">我们如何工作</h2>
-            <p className="text-gray-600">
-              我们的服务流程简单高效，确保为您提供最佳的金融解决方案。
+            <h2 className="h2-title">我们的服务流程</h2>
+            <p className="general-text">
+              我们的服务流程简单高效，确保为您提供最佳的金融解决方案
             </p>
           </div>
           
@@ -168,19 +160,16 @@ const ProductsPage = () => {
                 description: '我们定期跟进和评估方案效果，根据市场变化和您的需求调整优化。'
               }
             ].map((step, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black text-white font-bold mb-4">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-medium mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </motion.div>
+                <h3 className="card-title">{step.title}</h3>
+                <p className="general-text">{step.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -190,9 +179,9 @@ const ProductsPage = () => {
       <section className="py-16">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">定价方案</h2>
-            <p className="text-gray-600">
-              我们提供灵活的定价方案，满足不同客户的需求和预算。
+            <h2 className="h2-title">定价方案</h2>
+            <p className="general-text">
+              我们提供灵活的定价方案，满足不同客户的需求和预算
             </p>
           </div>
           
@@ -239,14 +228,11 @@ const ProductsPage = () => {
                 cta: '联系我们'
               }
             ].map((plan, index) => (
-              <motion.div
+              <div
                 key={index}
                 className={`border rounded-lg p-6 ${
                   plan.featured ? 'border-black shadow-lg' : ''
                 }`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 {plan.featured && (
                   <div className="bg-black text-white text-xs uppercase font-bold py-1 px-2 rounded-full inline-block mb-4">
@@ -280,31 +266,11 @@ const ProductsPage = () => {
                   plan.featured 
                     ? 'bg-black text-white hover:bg-gray-900' 
                     : 'border border-black text-black hover:bg-black hover:text-white'
-                } transition-colors`}>
+                }`}>
                   {plan.cta}
                 </button>
-              </motion.div>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">准备好开始了吗？</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              联系我们的专家团队，了解我们如何帮助您实现财务目标。
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="btn-primary">
-                预约咨询
-              </button>
-              <button className="text-gray-600 hover:text-black transition-colors">
-                了解更多信息
-              </button>
-            </div>
           </div>
         </div>
       </section>

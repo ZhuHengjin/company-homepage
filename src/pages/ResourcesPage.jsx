@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { HiSearch, HiDownload, HiOutlineDocumentText, HiOutlineBookOpen, HiOutlinePlay } from 'react-icons/hi';
 
 const ResourcesPage = () => {
@@ -82,22 +81,19 @@ const ResourcesPage = () => {
     return matchesFilter && matchesSearch;
   });
 
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-16 pb-5">
         <div className="container-custom">
-          <motion.div 
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">资源中心</h1>
-            <p className="text-lg text-gray-600">
-              探索我们的金融知识库，获取专业的见解和最新的行业动态。
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="title">资源中心</h1>
+            <p className="subtitle">
+              探索我们的金融知识库<br />
+              获取专业的见解和最新的行业动态
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -122,7 +118,7 @@ const ResourcesPage = () => {
               {filters.map((filter, index) => (
                 <button
                   key={index}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium ${
                     activeFilter === filter
                       ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -143,13 +139,9 @@ const ResourcesPage = () => {
           {filteredResources.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResources.map((resource) => (
-                <motion.div
+                <div
                   key={resource.id}
-                  className="border rounded-lg p-6 hover:shadow-lg transition-shadow"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  layout
+                  className="border rounded-lg p-6 hover:shadow-lg"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <span className="inline-block p-2 bg-gray-100 rounded-full">
@@ -157,17 +149,17 @@ const ResourcesPage = () => {
                     </span>
                     <span className="text-sm text-gray-500">{resource.date}</span>
                   </div>
-                  <h3 className="text-xl font-medium mb-2">{resource.title}</h3>
+                  <h3 className="card-title">{resource.title}</h3>
                   <div className="mb-4">
                     <span className="inline-block px-2 py-1 bg-gray-100 text-xs font-medium rounded">
                       {resource.type}
                     </span>
                   </div>
-                  <p className="text-gray-600 mb-4">{resource.description}</p>
+                  <p className="general-text">{resource.description}</p>
                   <button className="text-black font-medium hover:underline">
                     查看详情 →
                   </button>
-                </motion.div>
+                </div>
               ))}
             </div>
           ) : (
@@ -182,9 +174,9 @@ const ResourcesPage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">热门资源</h2>
-            <p className="text-gray-600">
-              这些是我们最受欢迎的资源，为您提供有价值的金融知识和工具。
+            <h2 className="h2-title">热门资源</h2>
+            <p className="general-text">
+              这些是我们最受欢迎的资源，为您提供有价值的金融知识和工具
             </p>
           </div>
           
@@ -209,25 +201,22 @@ const ResourcesPage = () => {
                 type: '指南'
               }
             ].map((resource, index) => (
-              <motion.div
+              <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
               >
                 <div className="text-3xl mb-4">{resource.icon}</div>
-                <h3 className="text-xl font-medium mb-2">{resource.title}</h3>
+                <h3 className="card-title">{resource.title}</h3>
                 <div className="mb-4">
                   <span className="inline-block px-2 py-1 bg-gray-100 text-xs font-medium rounded">
                     {resource.type}
                   </span>
                 </div>
-                <p className="text-gray-600 mb-4">{resource.description}</p>
+                <p className="general-text">{resource.description}</p>
                 <button className="text-black font-medium hover:underline">
                   立即访问 →
                 </button>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -238,9 +227,9 @@ const ResourcesPage = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto bg-gray-100 p-8 rounded-lg">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">订阅我们的新闻通讯</h2>
-              <p className="text-gray-600">
-                定期获取最新的金融见解、市场分析和投资策略。
+              <h2 className="h2-title">订阅我们的新闻通讯</h2>
+              <p className="general-text">
+                定期获取最新的金融见解、市场分析和投资策略
               </p>
             </div>
             
@@ -254,7 +243,7 @@ const ResourcesPage = () => {
                 />
                 <button
                   type="submit"
-                  className="py-2 px-6 bg-black text-white rounded-full hover:bg-gray-900 transition-colors"
+                  className="py-2 px-6 bg-black text-white rounded-full hover:bg-gray-900"
                 >
                   订阅
                 </button>
