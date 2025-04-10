@@ -1,5 +1,14 @@
 import { Link } from 'react-router-dom';
-import { FaTwitter, FaYoutube, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaTwitter, FaYoutube, FaLinkedin, FaGithub, FaInstagram, FaWeixin } from 'react-icons/fa';
+import XiaohongshuIcon from '../assets/icons/XiaohongshuIcon';
+
+// Custom WeChat Official Account icon
+const WeChatOfficialIcon = () => (
+  <div className="relative inline-flex items-center justify-center">
+    <FaWeixin size="1.25em" />
+    <span className="absolute -top-1 -right-1 bg-accent-blue rounded-full w-2 h-2"></span>
+  </div>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -45,17 +54,19 @@ const Footer = () => {
   ];
   
   const socialLinks = [
-    { icon: <FaTwitter />, path: 'https://twitter.com' },
-    { icon: <FaYoutube />, path: 'https://youtube.com' },
-    { icon: <FaLinkedin />, path: 'https://linkedin.com' },
-    { icon: <FaGithub />, path: 'https://github.com' },
-    { icon: <FaInstagram />, path: 'https://instagram.com' },
+    { icon: <FaTwitter size="1.25em" />, path: 'https://twitter.com' },
+    { icon: <FaYoutube size="1.25em" />, path: 'https://youtube.com' },
+    { icon: <FaLinkedin size="1.25em" />, path: 'https://linkedin.com' },
+    { icon: <FaGithub size="1.25em" />, path: 'https://github.com' },
+    { icon: <FaInstagram size="1.25em" />, path: 'https://instagram.com' },
+    { icon: <XiaohongshuIcon size="1.25em" className="transform translate-y-[-1px]" />, path: 'https://www.xiaohongshu.com/user/profile/6537211f000000000400aad5', title: '小红书' },
+    { icon: <WeChatOfficialIcon />, path: '#', title: '微信公众号' },
   ];
 
   return (
     <footer className="bg-white border-t border-gray-200 py-16">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {footerLinks.map((section, index) => (
             <div key={index}>
               <h3 className="font-medium text-sm text-gray-800 mb-4">{section.title}</h3>
@@ -73,23 +84,24 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-        </div>
+        </div> */}
         
-        <div className="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-8 border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-sm text-gray-500">
               UtilityMax © {currentYear}
             </p>
           </div>
           
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 items-center">
             {socialLinks.map((link, index) => (
               <a 
                 key={index}
                 href={link.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-black transition-colors"
+                title={link.title}
+                className="text-gray-400 hover:text-accent-blue transition-colors text-xl"
               >
                 {link.icon}
               </a>

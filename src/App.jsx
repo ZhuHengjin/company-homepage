@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -36,8 +35,7 @@ function App() {
         <Header 
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
-        <Navbar />
-        <div className="md:ml-40 pt-12 flex flex-col min-h-screen">
+        <div className="pt-16 flex flex-col min-h-screen">
           <main className="flex-grow p-5 md:p-10 border-b">
             <Routes>
               <Route path="/" element={<HomePage />} />

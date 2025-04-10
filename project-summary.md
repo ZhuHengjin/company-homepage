@@ -34,7 +34,7 @@ utilitymax-website/
 │   │   ├── ContactPage.jsx # 联系我们页面
 │   │   ├── HomePage.jsx # 首页
 │   │   ├── PlaceholderPages.jsx # 占位页面
-│   │   ├── ProductsPage.jsx # 产品分销页面
+│   │   ├── ProductsPage.jsx # 产品介绍页面
 │   │   ├── ResourcesPage.jsx # 资源中心页面
 │   │   └── ResponsibilityPage.jsx # 社会责任页面
 │   ├── App.jsx         # 应用主组件
@@ -50,7 +50,7 @@ utilitymax-website/
 
 1. **首页** (`/`): 展示公司概况和主要服务
 2. **关于我们** (`/about`): 公司简介、使命和团队介绍
-3. **产品分销** (`/products`): 产品和服务介绍
+3. **产品介绍** (`/products`): 产品和服务介绍
 4. **资源中心** (`/resources`): 金融知识和资源
 5. **社会责任** (`/responsibility`): 企业社会责任
 6. **联系我们** (`/contact`): 联系方式和表单

@@ -25,11 +25,15 @@ html, body {
   
   /* Navigation classes */
   .nav-link {
-    @apply text-xs text-gray-500 hover:text-black transition-colors duration-200;
+    @apply text-base text-gray-500 hover:text-accent-blue transition-colors duration-200 font-sans;
   }
   
   .nav-link-active {
-    @apply text-black font-medium;
+    @apply text-accent-gold font-medium;
+  }
+
+  .desktop-navigation {
+    @apply hidden md:flex items-center justify-center flex-grow space-x-14
   }
   
   /* Button classes */
@@ -45,21 +49,25 @@ html, body {
     @apply px-4 py-2 text-gray-600 hover:text-black transition-colors duration-200;
   }
   
+  .btn-accent-blue {
+    @apply px-4 py-2 border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white transition-colors duration-200;
+  }
+  
   .icon-button {
     @apply p-2 rounded-full hover:bg-gray-100 transition-colors;
   }
 
   /* Typography classes */
   .title {
-    @apply text-2xl md:text-4xl font-semibold md:mb-6 mb-3;
+    @apply text-2xl text-accent-blue md:text-4xl font-bold md:mb-6 mb-3;
   }
 
   .subtitle {
-    @apply text-sm text-gray-600 max-w-md mx-auto;
+    @apply text-sm text-gray-600 max-w-md mx-auto font-sans;
   }
 
   .h2-title {
-    @apply text-xl font-normal mb-3;
+    @apply text-xl text-accent-gold font-medium mb-3 font-sans;
   }
   
   .section-title {
@@ -71,7 +79,7 @@ html, body {
   }
   
   .general-text {
-    @apply text-sm mb-4 text-gray-600;
+    @apply text-base mb-4 text-main-text;
   }
   
   .link-text {

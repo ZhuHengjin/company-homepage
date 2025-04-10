@@ -58,7 +58,7 @@ const HomePage = () => {
       <section className="section-light">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">产品分销</h2>
+            <h2 className="text-3xl font-bold mb-4">产品介绍</h2>
             <p className="text-gray-600">
               我们提供多种创新的金融产品和服务，满足不同客户的需求。
             </p>
