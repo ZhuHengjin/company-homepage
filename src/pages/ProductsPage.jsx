@@ -53,18 +53,7 @@ const ProductsPage = () => {
           <div className="flex flex-col lg:flex-row gap-8 max-w-4xl mx-auto">
             <div className="lg:w-1/2">
               <p className="general-text">
-                根据 Franco Modigliani 和 Richard Brumberg 在 20 世纪 50 年代提出的生命周期假说（Lifecycle 
-                Hypothesis），人在一生中的收入和消费在不同生命阶段会有系统性变化。Modigliani 理论一项获得了 1985 
-                年诺贝尔经济学奖，平滑生命周期 Lifetime Smooth Consumption (LSC)是生命周期假说中的一个重要
-                理论，人一生消费趋近于收入的期望值。此中，收入周期分为三个阶段：一个是人生初期的
-                借款，人一生中期的"收入高峰"偿还负债并存储，主要在养老期间的储蓄开支。
-              </p>
-              <p className="general-text mt-4">
-                我们忠于 Franco Modigliani 和 Henry 学派的代表性观点，当门了解到生命周期，整合储蓄观察或
-                支付日常开销事项来存储，上学时，他人不同工作，贷款为一种偿，帮你做好平时的积极行动，家庭比
-                例，利润为优于日常生活需期，抓紧，家庭善中平平时期的有益的标准，正如我们 Henry 所言
-                有以切的据真可靠，基本沿线会贴合用户平生连贯不同阶段需—致—方案重要，如果一直想你的最
-                重要平均保收体对应一个"平滑消费"。
+                根据 Franco Modigliani 和 Richard Brumberg 在20世纪50年代提出的生命周期假说，人们应该基于一生的预期总收入做出消费、投资等经济决策，而不是当下的收入。Modigliani 也因这一理论获得了1985 年的诺贝尔经济学奖。终身平滑消费 Lifetime Smooth Consumption （LSC）是生命周期假说中的一个重要推论，它表明，人一生的消费应当保持平衡和稳定，从而实现每个阶段的生活水平一致—没有人会希望自己在收入高时挥霍无度，以致于没有任何用于养老、子女教育和生病住院的存款。 
               </p>
             </div>
             <div className="lg:w-1/2">
@@ -74,20 +63,17 @@ const ProductsPage = () => {
                   alt="生命周期消费模型图表" 
                   className="w-full h-auto"
                 />
-                <div className="text-xs text-gray-500 mt-2 text-center">
-                  Income = 收入, Borrow = 借贷, Save/Pay off Debts = 储蓄/偿还债务, 
-                  Supplement from Savings = 从储蓄中补充, Student = 学生阶段, 
-                  Working = 工作阶段, Retirement = 退休阶段
-                </div>
+                
               </div>
             </div>
           </div>
           <div className="max-w-4xl mx-auto mt-8">
+            <p className="general-text mt-4">
+              假设现在有一个名叫 Henry 的人。Henry 学生时代或许没有收入，但为了保证正常消费，他会选择借贷来支付自己的学费和正常生活。工作后，收入不断上升，通过这一过程，他会偿还学生时代的贷款，直到还清，同时为自己的退休生活而储蓄。退休后，他靠着中年时期的存款和投资生活。正是因为 Henry 合理、 有远见的财富管理，他才可以在退休后保证自己的生活水平和退休前一致—也就是说，他这一生最优的消费水平应该保持在图示的“平滑消费”。
+            </p>
+
             <p className="general-text">
-              当然，随生你会期望吉日人消费需平中收保有由效多，和率，句得来者，养老金，且信心，子女教育，初产期住
-              等等，UtilityMax 会考虑这次性，帮助用户个人的组心成就、支出预算，把这参考续仔，持续前行，
-              有合格用，组结收吸零结包，配额生金即期望贮，拥造入回最好组理理你决读取现，能经女好牛乎通讯
-              典。
+            当然，现实中会影响到人们消费水平的因素有很多，利率、价格水平、养老金、社保、子女教育、资产组合等等。 UtilityMax 会考虑这些因素，结合用户个人的的收入曲线、支出偏好、风险承受偏好、时间偏好、 寿命预期、退休规划等信息，根据生命周期模型，帮助人们进行财富管理和决策规划，最终实现终生平滑消费。
             </p>
           </div>
         </div>

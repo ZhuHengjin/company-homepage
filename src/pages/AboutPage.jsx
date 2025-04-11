@@ -50,9 +50,10 @@ const AboutPage = () => {
             <h1 className="text-3xl font-normal font-sans text-gray-600 mb-5">
               关于我们
             </h1>
-            <p className='text-6xl font-extrabold text-accent-blue mb-5'>
-              算法在内，稳健在外。
-            </p>
+            <div className='text-6xl font-extrabold text-accent-blue mb-5 flex flex-wrap justify-center'>
+              <span className="whitespace-nowrap">算法在内，</span>
+              <span className="whitespace-nowrap">稳健在外。</span>
+            </div>
             <p className="subtitle text-center">
                 UntilityMax是一家进行投资算法与研究的公司<br />
                 我们的使命是让技术为投资者带来利益。
@@ -180,7 +181,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
 
     </div>
   );

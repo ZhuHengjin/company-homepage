@@ -1,12 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import { HiMenu } from 'react-icons/hi';
+import { HiMenu, HiX } from 'react-icons/hi';
 import { navLinks } from './navConfig';
+import { forwardRef } from 'react';
 
-const Header = ({ setIsMobileMenuOpen }) => {
+const Header = forwardRef(({ setIsMobileMenuOpen, isMobileMenuOpen }, ref) => {
   const location = useLocation();
   
   return (
     <header 
+      ref={ref}
       className="fixed top-0 z-50 bg-white w-full shadow-sm"
     >
       <div className="container-custom py-4 flex items-center">
@@ -32,13 +34,18 @@ const Header = ({ setIsMobileMenuOpen }) => {
           
         <button 
           className="block md:hidden icon-button ml-auto" 
-          onClick={() => setIsMobileMenuOpen(true)}
+          onClick={setIsMobileMenuOpen}
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          <HiMenu className="w-6 h-6" />
+          {isMobileMenuOpen ? 
+            <HiX className="w-6 h-6" /> : 
+            <HiMenu className="w-6 h-6" />
+          }
         </button>
       </div>
     </header>
   );
-};
+});
 
 export default Header;

@@ -14,8 +14,22 @@ export default {
         'secondary': '#ffffff',
         'accent-blue': '#1B6398',
         'accent-gold': '#F0B358',
-        'main-text': '##1D1D1F'
+        'main-text': '#1D1D1F'
       },
+      animation: {
+        'slideDown': 'slideDown 0.2s ease-in-out forwards',
+        'slideUp': 'slideUp 0.2s ease-in-out forwards'
+      },
+      keyframes: {
+        slideDown: {
+          '0%': { transform: 'translateY(-10%)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 }
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(-10%)', opacity: 0 }
+        }
+      }
     },
   },
   plugins: [],

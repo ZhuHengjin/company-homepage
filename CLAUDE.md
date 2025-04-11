@@ -1,4 +1,6 @@
-# CLAUDE.md - Coding Guidelines
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Build/Development Commands
 - `npm run dev` - Start development server
@@ -14,7 +16,7 @@
 - One component per file, named same as component
 
 ### Imports/Exports
-- React imports first, then components, then utilities
+- React imports first, then third-party libraries, then components, then utilities
 - Default export for components
 - Group related imports together
 
@@ -22,7 +24,7 @@
 - Use proper indentation for JSX (2 spaces)
 - Multi-line JSX with props on new lines when multiple
 - Use template literals for conditional class names
-- Follow ESLint rules (ecmaVersion: 2020)
+- Follow ESLint rules (ecmaVersion: latest)
 
 ### Naming Conventions
 - PascalCase for components
@@ -33,7 +35,6 @@
 ### Styling
 - Use Tailwind CSS for styling
 - Color scheme: primary (#000000), secondary (#ffffff), accent (#f0f0f0), accent-blue (#1B6398)
-- Use Inter font for sans-serif text
 - Prefer utility classes over custom CSS
 
 ### Error Handling
