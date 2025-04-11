@@ -46,7 +46,7 @@ function App() {
         <div className="pt-16 flex flex-col min-h-screen">
           <main className="flex-grow p-5 md:p-10 border-b">
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<AboutPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/resources" element={<ResourcesPage />} />
