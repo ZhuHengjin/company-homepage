@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaChartLine, FaShieldAlt, FaUserCog, FaMobileAlt } from 'react-icons/fa';
-import lifecycleChart from '../assets/images/lifecycle-chart.pdf'; // You'll need to add this image
+import lifecycleChart from '../assets/images/lifecycle-chart.png'; // You'll need to add this image
 // import buildingImage from '../assets/images/building.jpg'; // You'll need to add this image
 // import dataAnalysisImage from '../assets/images/data-analysis.jpg'; // You'll need to add this image
 
