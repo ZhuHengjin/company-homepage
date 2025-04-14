@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HiLocationMarker, HiPhone, HiMail, HiClock } from 'react-icons/hi';
+import emailjs from 'emailjs-com';  // 需要先安装 emailjs-com: npm install emailjs-com
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -9,33 +10,50 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
+  useEffect(() => {
+    emailjs.init('bOq82UnuNw5DWFitY');
+  }, []);
   
   const [submitted, setSubmitted] = useState(false);
-  
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
+  // 修改后的 handleSubmit 使用 EmailJS 直接发送邮件
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
-    console.log(formData);
-    setSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
+    // 替换下面的 YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_USER_ID 为你在 EmailJS 控制台获取的实际值
+    const serviceID = 'service_345n33l';
+    const templateID = 'template_gcsqxot';
+    const userID = 'bOq82UnuNw5DWFitY';
+    
+    emailjs.send(serviceID, templateID, formData, userID)
+      .then((result) => {
+        console.log("邮件发送成功:", result.text);
+        setSubmitted(true);
+        setError(null);
+        
+        // 3秒后重置表单和提交状态
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+          });
+          setSubmitted(false);
+        }, 3000);
+      }, (error) => {
+        console.error("邮件发送失败:", error.text);
+        setError("邮件发送失败，请稍后再试。");
       });
-      setSubmitted(false);
-    }, 3000);
   };
-  
+
   const contactInfo = [
     {
       icon: <HiLocationMarker className="w-6 h-6" />,
@@ -242,6 +260,7 @@ const ContactPage = () => {
                       发送消息
                     </button>
                   </div>
+                  {error && <div className="text-red-500 text-sm">{error}</div>}
                 </form>
               )}
             </div>
@@ -260,7 +279,7 @@ const ContactPage = () => {
           </div>
           
           <div className="bg-gray-200 h-96 rounded-lg mb-12">
-            {/* Here you would typically integrate a map service like Google Maps */}
+            {/* 这里可以集成 Google Maps 或其他地图服务 */}
             <div className="w-full h-full flex items-center justify-center">
               <p className="text-gray-500">地图将在这里显示</p>
             </div>
@@ -268,10 +287,7 @@ const ContactPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {offices.map((office, index) => (
-              <div
-                key={index}
-                className="card-shadow"
-              >
+              <div key={index} className="card-shadow">
                 <h3 className="card-title">{office.city}</h3>
                 <p className="general-text">{office.address}</p>
                 <p className="general-text">{office.phone}</p>
@@ -311,10 +327,7 @@ const ContactPage = () => {
                 answer: '您可以在"资源中心"页面浏览和下载我们提供的各种金融资源，包括指南、报告、工具等。部分资源可能需要注册后才能访问。'
               }
             ].map((faq, index) => (
-              <div
-                key={index}
-                className="border border-gray-200 rounded-lg p-6"
-              >
+              <div key={index} className="border border-gray-200 rounded-lg p-6">
                 <h3 className="card-title-sm mb-3">{faq.question}</h3>
                 <p className="general-text">{faq.answer}</p>
               </div>
