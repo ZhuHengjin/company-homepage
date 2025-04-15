@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import { useState, useEffect, useRef } from 'react';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -14,6 +14,7 @@ import MobileMenu from './components/MobileMenu';
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -29,33 +30,38 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
-
+  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar 
-          scrolled={scrolled} 
-          setIsMobileMenuOpen={setIsMobileMenuOpen} 
+      <div className="min-h-screen relative bg-white">
+        <Header 
+          ref={headerRef}
+          setIsMobileMenuOpen={toggleMobileMenu}
+          isMobileMenuOpen={isMobileMenuOpen}
         />
+        <div className="pt-16 flex flex-col min-h-screen">
+          <main className="flex-grow p-5 md:p-10 border-b">
+            <Routes>
+              <Route path="/" element={<AboutPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/responsibility" element={<ResponsibilityPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
         <MobileMenu 
           isOpen={isMobileMenuOpen} 
-          onClose={() => setIsMobileMenuOpen(false)} 
+          onClose={() => setIsMobileMenuOpen(false)}
         />
-        
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/resources" element={<ResourcesPage />} />
-            <Route path="/responsibility" element={<ResponsibilityPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-        
-        <Footer />
       </div>
     </Router>
   );

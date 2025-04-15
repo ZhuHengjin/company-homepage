@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Songti SC", "Noto Serif SC", "SimSun", "宋体", serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@layer base {
+  main {
+  }
+}
+
+@layer components {
+  /* Container classes */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Navigation classes */
+  .nav-link {
+    @apply text-base text-gray-500 hover:text-accent-blue transition-colors duration-200 font-sans;
+  }
+  
+  .nav-link-active {
+    @apply text-accent-gold font-medium;
+  }
+
+  .desktop-navigation {
+    @apply hidden md:flex items-center justify-center flex-grow space-x-14
+  }
+  
+  /* Button classes */
+  .btn-primary {
+    @apply px-4 py-2 border border-black text-black hover:bg-black hover:text-white transition-colors duration-200;
+  }
+  
+  .btn-primary-sm {
+    @apply px-3 py-1.5 border border-black text-black hover:bg-black hover:text-white transition-colors duration-200 text-sm;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 text-gray-600 hover:text-black transition-colors duration-200;
+  }
+  
+  .btn-accent-blue {
+    @apply px-4 py-2 border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white transition-colors duration-200;
+  }
+  
+  .icon-button {
+    @apply p-2 rounded-full hover:bg-gray-100 transition-colors;
+  }
+
+  /* Typography classes */
+  .title {
+    @apply text-2xl text-accent-blue md:text-4xl font-bold md:mb-6 mb-3;
+  }
+
+  .subtitle {
+    @apply text-sm text-gray-600 max-w-md mx-auto font-sans;
+  }
+
+  .h2-title {
+    @apply text-xl text-accent-gold font-medium mb-3 font-sans;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-4;
+  }
+  
+  .section-description {
+    @apply text-gray-600 mb-6;
+  }
+  
+  .general-text {
+    @apply text-base mb-4 text-main-text;
+  }
+  
+  .link-text {
+    @apply text-gray-600 hover:text-black transition-colors;
+  }
+  
+  .link-arrow {
+    @apply inline-block text-black font-medium hover:underline;
+  }
+
+  /* Image classes */
+  .general-image {
+    @apply w-full h-full object-cover rounded-lg;
+  }
+  
+  .img-container {
+    @apply relative bg-gray-200 rounded-lg overflow-hidden;
+    aspect-ratio: 16/9;
+  }
+  
+  .img-aspect-16-9 {
+    @apply relative bg-gray-200;
+    aspect-ratio: 16/9;
+  }
+  
+  .img-aspect-3-4 {
+    @apply relative bg-gray-200;
+    aspect-ratio: 3/4;
+  }
+
+  /* Card classes */
+  .card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden p-6;
+  }
+  
+  .card-hover {
+    @apply border p-6 rounded-lg hover:shadow-lg transition-shadow;
+  }
+  
+  .card-outline {
+    @apply border border-gray-200 rounded-lg p-6;
+  }
+  
+  .card-title {
+    @apply text-lg font-medium mb-2;
+  }
+  
+  .card-title-sm {
+    @apply text-base font-medium mb-2;
+  }
+
+  /* Layout classes */
+  .grid-2-cols {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-12 items-center;
+  }
+  
+  .grid-3-cols {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .grid-4-cols {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+  
+  .flex-center {
+    @apply flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4;
+  }
+  
+  .icon-with-text {
+    @apply flex items-center space-x-2;
+  }
+  
+  /* Section classes */
+  .section-light {
+    @apply py-16;
+  }
+  
+  .section-dark {
+    @apply py-16 bg-gray-50;
+  }
+  
+  .section-header {
+    @apply text-center max-w-3xl mx-auto mb-12;
+  }
+
+  /* Form classes */
+  .form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .form-group {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+}

@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HiX } from 'react-icons/hi';
+import { useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { navLinks } from './navConfig';
 
 const MobileMenu = ({ isOpen, onClose }) => {
+  const location = useLocation();
+  const menuRef = useRef(null);
+  
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -17,133 +19,62 @@ const MobileMenu = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
   
-  const navLinks = [
-    { name: '研究', path: '/research' },
-    { name: '安全', path: '/safety' },
-    { name: 'UtilityMax', path: '/utilitymax' },
-    { name: 'API平台', path: '/api' },
-    { name: '商务', path: '/business' },
-    { name: '故事', path: '/stories' },
-    { name: '公司', path: '/company' },
-    { name: '新闻', path: '/news' },
-  ];
-  
-  const mainLinks = [
-    { name: '关于我们', path: '/about' },
-    { name: '产品分销', path: '/products' },
-    { name: '资源中心', path: '/resources' },
-    { name: '社会责任', path: '/responsibility' },
-    { name: '联系我们', path: '/contact' },
-  ];
-  
-  const menuVariants = {
-    closed: {
-      x: '100%',
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
+  // Add animation and click outside detection
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target) && 
+          !event.target.closest('button[aria-label="Close menu"]') && 
+          !event.target.closest('button[aria-label="Open menu"]')) {
+        onClose();
       }
-    },
-    open: {
-      x: '0%',
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
-      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
     }
-  };
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+  
+  if (!isOpen) return null;
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black bg-opacity-50"
-            onClick={onClose}
-          />
-          
-          {/* Menu */}
-          <motion.div
-            className="fixed top-0 right-0 z-50 w-full max-w-sm h-full bg-white shadow-xl overflow-auto"
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-          >
-            <div className="p-4 flex justify-end">
-              <button 
-                onClick={onClose}
-                className="p-2 rounded-full hover:bg-gray-100"
-              >
-                <HiX className="w-6 h-6" />
-              </button>
-            </div>
-            
-            <div className="px-6 py-4">
-              <div className="mb-8">
-                <input
-                  type="text"
-                  placeholder="搜索..."
-                  className="w-full py-2 px-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-black"
-                />
-              </div>
-              
-              {/* Main Navigation */}
-              <div className="mb-8">
-                <ul className="space-y-6 text-lg">
-                  {mainLinks.map((link) => (
-                    <li key={link.path}>
-                      <Link 
-                        to={link.path}
-                        className="block font-medium hover:text-gray-600 transition-colors"
-                        onClick={onClose}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Secondary Navigation */}
-              <div className="mt-12 border-t pt-8">
-                <ul className="space-y-4">
-                  {navLinks.map((link) => (
-                    <li key={link.path}>
-                      <Link 
-                        to={link.path}
-                        className="block text-gray-600 hover:text-black transition-colors"
-                        onClick={onClose}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Login Button */}
-              <div className="mt-12">
+    <>
+      {/* Semi-transparent backdrop */}
+      <div
+        className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      
+      {/* Dropdown Menu */}
+      <div
+        ref={menuRef}
+        className={`fixed top-16 left-0 right-0 z-40 bg-white shadow-lg md:hidden overflow-hidden 
+                   ${isOpen ? 'animate-slideDown' : 'animate-slideUp'}`}
+        style={{ maxHeight: 'calc(100vh - 64px)' }}
+      >
+        <nav className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 64px)' }}>
+          <ul className="divide-y divide-gray-100">
+            {navLinks.map((link) => (
+              <li key={link.path}>
                 <Link 
-                  to="/login" 
-                  className="block w-full text-center btn-primary"
+                  to={link.path}
+                  className={`block px-6 py-4 text-base nav-link ${location.pathname === link.path 
+                    ? 'nav-link-active' 
+                    : ''} hover:bg-gray-50`}
                   onClick={onClose}
                 >
-                  登录
+                  {link.name}
                 </Link>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </>
   );
 };
 

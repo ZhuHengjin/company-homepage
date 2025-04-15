@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const HomePage = () => {
   return (
@@ -8,52 +7,37 @@ const HomePage = () => {
       <section className="py-20 md:py-28">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <h1 className="title text-4xl md:text-6xl">
               参与塑造金融科技的未来
-            </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl text-gray-600 mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            </h1>
+            <p className="subtitle text-lg md:text-xl mb-10">
               我们提供前沿的金融解决方案，助力企业和个人实现财务目标，共创美好未来。
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
+            </p>
+            <div className="flex-center">
               <Link to="/about" className="btn-primary">
                 了解更多
               </Link>
-              <Link to="/contact" className="text-gray-600 hover:text-black transition-colors">
+              <Link to="/contact" className="link-text">
                 联系我们 →
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
       
       {/* About Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="section-dark">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid-2-cols">
             <div>
-              <h2 className="text-3xl font-bold mb-6">关于我们</h2>
+              <h2 className="section-title">关于我们</h2>
               <p className="text-gray-600 mb-6">
                 UtilityMax是一家领先的金融咨询公司。我们的使命是确保先进的金融科技能够惠及全人类，提供专业的财务建议，帮助客户做出明智的决策。
               </p>
               <p className="text-gray-600 mb-6">
                 我们的团队由金融专家和技术人才组成，致力于通过创新的方式解决复杂的财务挑战，为客户创造持久的价值。
               </p>
-              <Link to="/about" className="inline-block text-black font-medium hover:underline">
+              <Link to="/about" className="link-arrow">
                 查看更多信息 →
               </Link>
             </div>
@@ -71,16 +55,16 @@ const HomePage = () => {
       </section>
       
       {/* Products Section */}
-      <section className="py-16">
+      <section className="section-light">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">产品分销</h2>
+            <h2 className="text-3xl font-bold mb-4">产品介绍</h2>
             <p className="text-gray-600">
               我们提供多种创新的金融产品和服务，满足不同客户的需求。
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid-3-cols">
             {[
               {
                 title: "财富管理",
@@ -98,11 +82,9 @@ const HomePage = () => {
                 icon: "🛡️"
               }
             ].map((product, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                className="border p-6 rounded-lg hover:shadow-lg transition-shadow"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
+                className="card-hover"
               >
                 <div className="text-3xl mb-4">{product.icon}</div>
                 <h3 className="text-xl font-medium mb-2">{product.title}</h3>
@@ -110,14 +92,14 @@ const HomePage = () => {
                 <Link to="/products" className="text-black font-medium hover:underline">
                   了解更多 →
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
       
       {/* Resource Center Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="section-dark">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl font-bold mb-4">资源中心</h2>
@@ -126,24 +108,22 @@ const HomePage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid-4-cols">
             {[
               "金融规划指南",
               "投资策略分析",
               "市场研究报告",
               "风险评估工具"
             ].map((resource, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
+                className="card"
               >
                 <h3 className="text-lg font-medium mb-2">{resource}</h3>
                 <Link to="/resources" className="text-sm text-black font-medium hover:underline">
                   查看资源 →
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
           

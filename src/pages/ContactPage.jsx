@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { HiLocationMarker, HiPhone, HiMail, HiClock } from 'react-icons/hi';
 
 const ContactPage = () => {
@@ -96,19 +95,15 @@ const ContactPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-16 pb-5">
         <div className="container-custom">
-          <motion.div 
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">联系我们</h1>
-            <p className="text-lg text-gray-600">
-              有任何问题或需求？我们的团队随时准备为您提供帮助。
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="title">联系我们</h1>
+            <p className="subtitle">
+              有任何问题或需求？<br />
+              我们的团队随时准备为您提供帮助
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -117,12 +112,8 @@ const ContactPage = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-8">联系信息</h2>
+            <div>
+              <h2 className="h2-title">联系信息</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {contactInfo.map((item, index) => (
@@ -131,9 +122,9 @@ const ContactPage = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium mb-2">{item.title}</h3>
+                      <h3 className="card-title-sm">{item.title}</h3>
                       {item.details.map((detail, i) => (
-                        <p key={i} className="text-gray-600">{detail}</p>
+                        <p key={i} className="general-text">{detail}</p>
                       ))}
                     </div>
                   </div>
@@ -141,28 +132,24 @@ const ContactPage = () => {
               </div>
               
               <div className="mt-12">
-                <h3 className="text-xl font-bold mb-4">关注我们</h3>
+                <h3 className="card-title">关注我们</h3>
                 <div className="flex space-x-4">
                   {['微信', '微博', '抖音', 'LinkedIn'].map((platform, index) => (
                     <a
                       key={index}
                       href="#"
-                      className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
                     >
                       {platform.charAt(0)}
                     </a>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
             
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-8">发送消息</h2>
+            <div>
+              <h2 className="h2-title">发送消息</h2>
               
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 text-green-700 p-6 rounded-lg">
@@ -250,14 +237,14 @@ const ContactPage = () => {
                   <div>
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition-colors"
+                      className="btn-primary"
                     >
                       发送消息
                     </button>
                   </div>
                 </form>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -266,9 +253,9 @@ const ContactPage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">我们的位置</h2>
-            <p className="text-gray-600">
-              我们在中国的主要城市设有办事处，欢迎您前来访问。
+            <h2 className="h2-title">我们的位置</h2>
+            <p className="general-text">
+              我们在中国的主要城市设有办事处，欢迎您前来访问
             </p>
           </div>
           
@@ -281,18 +268,15 @@ const ContactPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {offices.map((office, index) => (
-              <motion.div
+              <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="card-shadow"
               >
-                <h3 className="text-xl font-bold mb-4">{office.city}</h3>
-                <p className="text-gray-600 mb-2">{office.address}</p>
-                <p className="text-gray-600 mb-2">{office.phone}</p>
-                <p className="text-gray-600">{office.email}</p>
-              </motion.div>
+                <h3 className="card-title">{office.city}</h3>
+                <p className="general-text">{office.address}</p>
+                <p className="general-text">{office.phone}</p>
+                <p className="general-text">{office.email}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -302,9 +286,9 @@ const ContactPage = () => {
       <section className="py-16">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold mb-4">常见问题</h2>
-            <p className="text-gray-600">
-              查看我们的常见问题解答，获取您可能需要的信息。
+            <h2 className="h2-title">常见问题</h2>
+            <p className="general-text">
+              查看我们的常见问题解答，获取您可能需要的信息
             </p>
           </div>
           
@@ -316,43 +300,25 @@ const ContactPage = () => {
               },
               {
                 question: '你们提供哪些类型的金融咨询服务？',
-                answer: '我们提供多种金融咨询服务，包括个人理财规划、投资顾问、风险管理、退休规划等。您可以在"产品分销"页面了解更多详情。'
+                answer: '我们提供多种金融咨询服务，包括个人理财规划、投资顾问、风险管理、退休规划等。您可以在"产品介绍"页面了解更多详情。'
               },
               {
                 question: '咨询服务的收费标准是什么？',
-                answer: '我们的收费标准取决于您所需的具体服务类型和复杂程度。您可以在"产品分销"页面查看我们的基本定价方案，或联系我们获取定制报价。'
+                answer: '我们的收费标准取决于您所需的具体服务类型和复杂程度。您可以在"产品介绍"页面查看我们的基本定价方案，或联系我们获取定制报价。'
               },
               {
                 question: '如何查看和下载金融资源？',
                 answer: '您可以在"资源中心"页面浏览和下载我们提供的各种金融资源，包括指南、报告、工具等。部分资源可能需要注册后才能访问。'
               }
             ].map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="border border-gray-200 rounded-lg p-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <h3 className="text-lg font-medium mb-3">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </motion.div>
+                <h3 className="card-title-sm mb-3">{faq.question}</h3>
+                <p className="general-text">{faq.answer}</p>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">准备好开始了吗？</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              联系我们的专家团队，了解我们如何帮助您实现财务目标。
-            </p>
-            <button className="btn-primary">
-              预约咨询
-            </button>
           </div>
         </div>
       </section>
